@@ -29,6 +29,8 @@ public abstract class AbstractSpringTest {
 	protected ObjectMapper mapper = new ObjectMapper();
 	protected static final String HOST = "localhost";
 	protected static final String PORT = "8100";
+	
+	public static String headersToken="";
 
 	public TestRestTemplate getRestTemplate() {
 		return restTemplate != null ? restTemplate : new TestRestTemplate();
@@ -41,10 +43,17 @@ public abstract class AbstractSpringTest {
 	public ResponseEntity<String> invokeRESTCall(String url, HttpMethod method, HttpEntity<?> requestEntity) {
 		return getRestTemplate().exchange(url, method, requestEntity, String.class);
 	}
+	
+	public void setJWTToken(String token) {
+		
+		this.headersToken = token;
+		//System.out.println("Set Token>>>>>  "+ this.headersToken);
+	}
 
 	public HttpHeaders getDefaultHttpHeaders() {
+		System.out.println("\nAvailable Token-> "+ this.headersToken+"\n");
 		HttpHeaders headers = new HttpHeaders();
-		headers.set("Authorization", "dsfdsfdsgfdsgsdg");
+		headers.set("Authorization", this.headersToken);
 		headers.setContentType(MediaType.APPLICATION_JSON); 
 		return headers; 
 	}// ...

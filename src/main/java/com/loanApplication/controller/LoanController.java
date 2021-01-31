@@ -35,11 +35,11 @@ public class LoanController {
 	public ResponseEntity<List<Loan>> getLoan(@RequestHeader(name = "Authorization") String token,
 			@RequestParam("clientType") String clientType) throws InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {  
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {  
+			throw new InvalidExpiredTokenException("");
+		}
 
 		// Returning Result according to UserType Admin/User
 		String[] clientSplit = clientType.split("_");
@@ -64,11 +64,11 @@ public class LoanController {
 			@RequestParam("clientType") String clientType, @RequestParam("loannumber") String loannumber)
 			throws InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+			throw new InvalidExpiredTokenException("");
+		}
 
 		String[] clientSplit = clientType.split("_");
 		List<Loan> allLoanListByLoanNumber = new ArrayList<Loan>();
@@ -88,11 +88,11 @@ public class LoanController {
 	public ResponseEntity<List<Loan>> getLoanByFirstName(@RequestHeader(name = "Authorization") String token,
 			@RequestParam("firstname") String firstname) throws InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+			throw new InvalidExpiredTokenException("");
+		}
 
 		List<Loan> loanListByFirstName = new ArrayList<Loan>();
 		loanListByFirstName = loanService.getLoanByFirstName(firstname);
@@ -107,11 +107,11 @@ public class LoanController {
 	public ResponseEntity<List<Loan>> getLoanByLastName(@RequestHeader(name = "Authorization") String token,
 			@RequestParam("lastname") String lastname) throws InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+			throw new InvalidExpiredTokenException("");
+		}
 
 		List<Loan> loanListByLastName = new ArrayList<Loan>();
 		loanListByLastName = loanService.getLoanByLastName(lastname);
@@ -127,11 +127,11 @@ public class LoanController {
 	public ResponseEntity<Loan> originateNewLoan(@RequestHeader(name = "Authorization") String token,
 			@RequestBody Loan loan) throws InvalidExpiredTokenException {
 
-//		try {// Validating
-//			//feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			//feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+			throw new InvalidExpiredTokenException("");
+		}
 
 		Loan newLoan = loanService.addNewLoanItem(loan);
 		return new ResponseEntity<Loan>(newLoan, HttpStatus.CREATED);
@@ -146,12 +146,12 @@ public class LoanController {
 	public ResponseEntity<String> deleteLoan(@RequestHeader(name = "Authorization") String token,
 			@RequestParam(name = "id") String loanId) throws LoanDoesNotExistException, InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+
+			throw new InvalidExpiredTokenException("");
+		}
 
 		loanService.deleteLoanItemById(loanId);
 		return new ResponseEntity<String>(HttpStatus.OK);
@@ -165,12 +165,12 @@ public class LoanController {
 	public ResponseEntity<String> updateLoan(@RequestHeader(name = "Authorization") String token,
 			@RequestBody Loan loan) throws LoanDoesNotExistException, InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+
+			throw new InvalidExpiredTokenException("");
+		}
 
 		loanService.updateLoanItem(loan);
 		return new ResponseEntity<String>(HttpStatus.OK);
@@ -185,12 +185,12 @@ public class LoanController {
 	public ResponseEntity<List<Loan>> getHello(@RequestHeader(name = "Authorization") String token)
 			throws InvalidExpiredTokenException {
 
-//		try {// Validating
-//			feignForSecurity.validate(token).getBody();
-//		} catch (Exception e) {
-//
-//			throw new InvalidExpiredTokenException("");
-//		}
+		try {// Validating
+			feignForSecurity.validate(token).getBody();
+		} catch (Exception e) {
+
+			throw new InvalidExpiredTokenException("");
+		}
 
 		List<Loan> test = loanService.test();
 		return new ResponseEntity<List<Loan>>(test, HttpStatus.OK);

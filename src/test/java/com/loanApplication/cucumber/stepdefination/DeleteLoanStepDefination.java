@@ -23,7 +23,7 @@ public class DeleteLoanStepDefination extends AbstractSpringTest {
 
 	@Given("^the Loan to Be Deleted with LoanNumber \"([^\"]*)\"$")
 	public void the_Loan_to_Be_Deleted_with_LoanNumber(String loanNumber) throws Throwable {
-
+		System.out.println("\n\nDelete Item=========================================================================");
 		if (logger.isInfoEnabled()) {
 			logger.info("Loan to be deleted with LoanNumber  {} ", loanNumber);
 		}
@@ -43,10 +43,11 @@ public class DeleteLoanStepDefination extends AbstractSpringTest {
 		logger.info("url {}", url);
 
 		HttpEntity<?> requestEntity = new HttpEntity<>(queryParams, getDefaultHttpHeaders());
-		System.out.println(requestEntity + "<------------------");
+		System.out.println("**************** Sending ********************");
+		System.out.println(requestEntity );
+		System.out.println("**********************************************");
 
-		Thread.sleep(3000);
-		//response = invokeRESTCall(url, HttpMethod.DELETE, requestEntity);
+		response = invokeRESTCall(url, HttpMethod.DELETE, requestEntity);
 	}
 
 	@Then("^On successful delete the client receive status code of (\\d+)$")
@@ -54,22 +55,8 @@ public class DeleteLoanStepDefination extends AbstractSpringTest {
 		if (response != null && response.getStatusCode().is2xxSuccessful()) {
 			assertEquals(statusCode, response.getStatusCode().value());
 		}
+		
 	}
 
-///////////////////////
-//	@Given("^the Already Deleted Loan to be deleted again with LoanNumber \"([^\"]*)\"$")
-//	public void the_Already_Deleted_Loan_to_be_deleted_again_with_LoanNumber(String loanNumber) throws Throwable {
-//		if (logger.isInfoEnabled()) {
-//			logger.info("Deleted Loan to be deleted Again with LoanNumber  {} ", loanNumber);
-//		}
-//		this.loanNumber = loanNumber;
-//	}
-//
-//	@Then("^On delete call, user must get error as NOT FOUND (\\d+)$")
-//	public void on_delete_call_user_must_get_error_as_NOT_FOUND(int statusCode) throws Throwable {
-//		if (response != null && response.getStatusCode().is2xxSuccessful()) {
-//			assertEquals(statusCode, response.getStatusCode().value());
-//		}
-//	}
 
 }
