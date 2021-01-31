@@ -83,7 +83,7 @@ public class JwtAuthenticationStepDefination extends AbstractSpringTest {
 		}
 
 	}
-
+ 
 	//////////////////////////////////////////////////////////////////// Validate
 
 	@When("^the client calls \"([^\"]*)\" with the generated TOKEN$")
